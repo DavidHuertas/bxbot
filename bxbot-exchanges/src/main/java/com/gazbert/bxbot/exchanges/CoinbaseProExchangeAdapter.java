@@ -57,11 +57,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
@@ -847,7 +843,7 @@ public final class CoinbaseProExchangeAdapter extends AbstractExchangeAdapter
       
       // Build the signature string: timestamp + method + requestPath + body
       final String signatureBuilder =
-          timestamp + httpMethod.toUpperCase() + "/" + apiMethod + requestBody;
+          timestamp + httpMethod.toUpperCase(Locale.ROOT) + "/" + apiMethod + requestBody;
 
       // Sign the signature string and Base64 encode it
       mac.reset();
